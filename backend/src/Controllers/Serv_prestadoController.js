@@ -43,12 +43,13 @@ module.exports = {
   // },
 
   async detalhe(request, response) {
-    const prestador_id = request.headers.authorization;
+    const id = request.headers.authorization;
 
     const serv_prestado = await conn("serv_prestado")
-      .where("prestador_id", prestador_id)
+      .where("prestador_id", id)
       .join("prestadores", "prestadores.id", "=", "serv_prestado.prestador_id")
-      .select(["serv_prestado.*", "prestadores.nome"]);
+      .join("servicos", "servicos.id", "=", "serv_prestado.servico_id")
+      .select(["serv_prestado.*", "prestadores.nome", "servicos.name"]);
 
     return response.json(serv_prestado);
   },

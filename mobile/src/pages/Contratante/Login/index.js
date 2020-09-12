@@ -55,7 +55,7 @@ const loginContratante = () => {
     Alert.alert("Erro na Autenticação", "Dados incorretos, tente novamente!", [
       {
         text: "Ok",
-        onPress: () => console.log(),
+        onPress: () => console.log("Erro Login"),
       },
     ]);
 

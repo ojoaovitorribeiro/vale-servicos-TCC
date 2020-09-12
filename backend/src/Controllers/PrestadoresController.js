@@ -2,7 +2,6 @@ const conn = require("../database/connecton");
 const { request } = require("express");
 const crypto = require("crypto");
 
-
 module.exports = {
   // criar
   async create(req, res) {
@@ -19,13 +18,12 @@ module.exports = {
       uf,
     } = req.body;
 
-
     await conn("prestadores").insert({
       cpf,
       nome,
       // img: req.file,
-      // img: req.file,
       img,
+      // img,
       email,
       senha,
       telefone,
@@ -36,7 +34,6 @@ module.exports = {
     });
 
     return res.json(req.body);
-   
   },
 
   // listar
@@ -64,7 +61,7 @@ module.exports = {
 
     const {
       nome,
-      // img,
+      img,
       email,
       senha,
       telefone,
@@ -76,7 +73,7 @@ module.exports = {
     await conn("prestadores")
       .update({
         nome,
-        img: req.file.filename,
+        img,
         email,
         senha,
         telefone,

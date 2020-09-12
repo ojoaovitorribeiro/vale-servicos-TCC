@@ -120,10 +120,8 @@ const DadosPessoaiss = () => {
 
               <Text style={styles.data}>Cidade</Text>
               <Text style={styles.dataValue}>{contratante.city}/MS</Text>
-            </View>
-          ))}
 
-          <Text
+              {/* <Text
             style={[
               styles.description,
               {
@@ -136,18 +134,20 @@ const DadosPessoaiss = () => {
                 fontSize: 4,
               },
             ]}
-          ></Text>
-          <BaseButton style={styles.button}>
-            <Text style={styles.buttonText} onPress={() => createAlert()}>
-              Excluir conta
-            </Text>
-            <Text
-              style={styles.buttonText}
-              onPress={() => handleNavigateToAlterarDados(contratantes)}
-            >
-              Editar
-            </Text>
-          </BaseButton>
+          ></Text> */}
+              <BaseButton style={styles.button}>
+                <Text style={styles.buttonText} onPress={() => createAlert()}>
+                  Excluir conta
+                </Text>
+                <Text
+                  style={styles.buttonText}
+                  onPress={() => handleNavigateToAlterarDados(contratante)}
+                >
+                  Editar
+                </Text>
+              </BaseButton>
+            </View>
+          ))}
         </View>
       </ScrollView>
     </>

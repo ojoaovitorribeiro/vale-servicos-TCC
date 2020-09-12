@@ -28,6 +28,7 @@ const Detalhess = () => {
   function handleNavigateToPrestadores() {
     navigation.goBack();
   }
+
   function handleNavigateToAllServicos(prestador) {
     navigation.navigate("AllServicoss", { prestador });
   }
@@ -154,6 +155,8 @@ const Detalhess = () => {
           <Text style={styles.dataValue}>{prestador.referencia}</Text>
           <Text style={styles.description}>Cidade/UF</Text>
           <Text style={styles.dataValue}>{prestador.city}/MS</Text>
+          <Text style={styles.description}>Sobre o Prestador</Text>
+          <Text style={styles.dataValue}>{prestador.sobre}</Text>
           <Text
             style={[
               // styles.description,
@@ -199,8 +202,6 @@ const Detalhess = () => {
               onPress={() => handleNavigateToPrestadores(prestador)}
             />
           </View>
-          <Text style={styles.description}>Descrição do Serviço</Text>
-          <Text style={styles.dataValue}>{prestador.sobre}</Text>
           <Text style={[styles.description]}>Descrição do Serviço</Text>
           <Text style={styles.dataValue}>{prestador.descricao}</Text>
 

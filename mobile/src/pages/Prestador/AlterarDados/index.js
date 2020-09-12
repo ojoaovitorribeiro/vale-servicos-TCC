@@ -13,7 +13,7 @@ const AlterarDados = () => {
   const [prestadores, setPrestadores] = useState([]);
   // console.log(prestadores);
   const prestador = route.params.prestador;
-  console.log(route.params.prestador);
+  // console.log(route.params.prestador);
 
   function handleNavigateToDadosPessoais() {
     navigation.navigate("DadosPessoais");
@@ -29,7 +29,7 @@ const AlterarDados = () => {
   const [sobre, setSobre] = useState(prestador.sobre);
 
   const prestadorCpf = route.params.prestador.cpf;
-  console.log(prestadorCpf);
+  // console.log(prestadorCpf);
 
   useEffect(() => {
     api
@@ -53,6 +53,7 @@ const AlterarDados = () => {
         city,
         referencia,
         sobre,
+        img: "fé pra todo lado",
       };
       const response = await api.put(`editarprestador/${prestadorCpf}`, data);
       return handleNavigateToDadosPessoais();
@@ -64,7 +65,7 @@ const AlterarDados = () => {
     Alert.alert("Erro ao Alterar Dados", "Tente novamente!", [
       {
         text: "Ok",
-        onPress: () => console.log(),
+        onPress: () => console.log("Erro"),
       },
     ]);
 

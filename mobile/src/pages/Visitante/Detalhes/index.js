@@ -17,12 +17,12 @@ const Detalhes = () => {
   const route = useRoute();
   const prestador = route.params.prestador;
   const servicoId = route.params.prestador.id;
-
+  const servicoIdd = route.params.serv.name;
   function handleNavigateToPrestadores() {
     navigation.goBack();
   }
   function handleNavigateToAllServicos(prestador) {
-    navigation.navigate("AllServicos", { prestador });
+    navigation.navigate("AllServicos", { prestador, servicoIdd });
   }
   function handleNavigateToAvaliacoes(prestador) {
     navigation.navigate("Avaliacoes", { prestador });
@@ -132,6 +132,9 @@ const Detalhes = () => {
           <Text style={styles.dataValue}>{prestador.referencia}</Text>
           <Text style={styles.description}>Cidade/UF</Text>
           <Text style={styles.dataValue}>{prestador.city}/MS</Text>
+
+          <Text style={styles.description}>Sobre</Text>
+          <Text style={styles.dataValue}>{prestador.sobre}</Text>
           <Text
             style={[
               // styles.description,
@@ -176,8 +179,6 @@ const Detalhes = () => {
               onPress={() => handleNavigateToPrestadores(prestador)}
             />
           </View>
-          <Text style={styles.description}>Descrição do Serviço</Text>
-          <Text style={styles.dataValue}>{prestador.sobre}</Text>
           <Text style={[styles.description]}>Descrição do Serviço</Text>
           <Text style={styles.dataValue}>{prestador.descricao}</Text>
         </View>
@@ -323,7 +324,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     width: 150,
-    height: 50,
+    height: 48,
     backgroundColor: "#0426B0",
     color: "#FFF",
     fontSize: 16,

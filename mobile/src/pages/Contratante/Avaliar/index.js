@@ -22,7 +22,7 @@ const Avaliar = () => {
   const prestadorId = route.params.prestador.prestador_id;
   const prestadores = route.params.prestadores;
   const contratanteId = route.params.contratante.id;
-  const [start, setStart] = useState();
+  const [start, setStart] = useState("");
 
   function ratingCompleted(rating) {
     // console.log("Rating is: " + rating);
@@ -110,15 +110,16 @@ const Avaliar = () => {
           placeholder="Comentário"
         />
 
-        <RectButton style={[styles.button, { marginStart: 20, marginEnd: 20 }]}>
+        <RectButton
+          style={[styles.button, { marginStart: 20, marginEnd: 20 }]}
+          onPress={handleAvaliar}
+        >
           <View style={styles.buttonIcon}>
             <Text>
               <AntDesign name="check" size={30} color="white" />
             </Text>
           </View>
-          <Text style={styles.buttonText} onPress={handleAvaliar}>
-            Finalizar Avaliação
-          </Text>
+          <Text style={styles.buttonText}>Finalizar Avaliação</Text>
         </RectButton>
       </ScrollView>
     </View>

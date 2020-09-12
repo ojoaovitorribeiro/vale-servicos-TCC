@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, Text, TextInput, AsyncStorage, Alert } from 'react-native';
+import React, { useState } from "react";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TextInput,
+  AsyncStorage,
+  Alert,
+} from "react-native";
 import { BaseButton } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
-import { FontAwesome5 } from '@expo/vector-icons';
-import { Feather as Icon } from '@expo/vector-icons';
+import { FontAwesome5 } from "@expo/vector-icons";
+import { Feather as Icon } from "@expo/vector-icons";
 import api from "../../../services/api";
 
 const RecuperarAcessoo = () => {
@@ -21,7 +28,7 @@ const RecuperarAcessoo = () => {
   async function handleRecuperar() {
     const response = await api.post("sessioncontratante", { cpf });
     if (!response.data.cpf) {
-      Alert(erroRecuperar())
+      Alert(erroRecuperar());
     } else {
       const data = { senha };
       try {
@@ -33,12 +40,16 @@ const RecuperarAcessoo = () => {
     }
   }
   const erroRecuperar = () =>
-    Alert.alert("Erro ao Recuperar Acesso", "Dados incorretos, tente novamente!", [
-      {
-        text: "Ok",
-        onPress: () => console.log(),
-      },
-    ]);
+    Alert.alert(
+      "Erro ao Recuperar Acesso",
+      "Dados incorretos, tente novamente!",
+      [
+        {
+          text: "Ok",
+          onPress: () => console.log("Erro recuperar acesso"),
+        },
+      ]
+    );
 
   return (
     <View style={styles.container}>

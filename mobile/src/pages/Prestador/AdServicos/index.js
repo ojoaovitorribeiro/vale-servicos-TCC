@@ -50,7 +50,7 @@ const AdServicos = () => {
       setSelectedItems([id]);
       setServicoId(id);
       // console.log(serv);
-      console.log("teste", serv);
+      // console.log("teste", serv);
     }
     // setServicoId(id);
     // console.log(serv);
@@ -148,7 +148,7 @@ const AdServicos = () => {
           ]}
         ></Text>
         <Text style={[styles.data, { marginBottom: 9 }]}>
-          Descreva seu serviços
+          Descreva seu serviço:
         </Text>
 
         <TextInput

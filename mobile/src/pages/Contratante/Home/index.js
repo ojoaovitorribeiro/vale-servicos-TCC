@@ -5,6 +5,7 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Feather as Icon } from "@expo/vector-icons";
@@ -27,6 +28,27 @@ const homeContratante = () => {
   function handleNavigateToDadosPessoais(contratante) {
     navigation.navigate("DadosPessoaiss", { contratante });
   }
+  function handleNavigateToHome() {
+    navigation.navigate("Home");
+  }
+  const createAlert = () =>
+    Alert.alert(
+      "Sair",
+      "Tem certeza que deseja sair?",
+      [
+        {
+          text: "Cancelar",
+          onPress: () => console.log(),
+        },
+        {
+          text: "Sair",
+          onPress: () => {
+            return handleNavigateToHome();
+          },
+        },
+      ],
+      { cancelable: false }
+    );
 
   const [servicos, setServicos] = useState([]);
 
@@ -39,16 +61,6 @@ const homeContratante = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={[{ marginTop: 5 }]} onPress={handleNavigateToBack}>
-          <Text>
-            <Icon name="arrow-left" size={30} color="#0426B0" />
-          </Text>
-        </Text>
-        {/* <View style={styles.searchSection}> */}
-        <Text style={[{ fontWeight: "bold", fontSize: 20, marginTop: 5 }]}>
-          Área do Contratante
-        </Text>
-        {/* </View> */}
         {/* <View style={styles.searchSection}> */}
         <Text
           style={[{ marginTop: 5, paddingRight: 10 }]}
@@ -56,6 +68,17 @@ const homeContratante = () => {
         >
           <Text>
             <Icon name="user" size={30} color="#0426B0" />
+          </Text>
+        </Text>
+        <Text style={[{ fontWeight: "bold", fontSize: 20, marginTop: 5 }]}>
+          Área do Contratante
+        </Text>
+        {/* </View> */}
+        {/* <View style={styles.searchSection}> */}
+
+        <Text style={[{ marginTop: 5 }]} onPress={createAlert}>
+          <Text>
+            <Icon name="log-out" size={30} color="#0426B0" />
           </Text>
         </Text>
       </View>

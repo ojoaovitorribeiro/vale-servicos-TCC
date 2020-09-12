@@ -56,7 +56,7 @@ const AlterarServicos = () => {
     Alert.alert("Erro ao Alterar Dados", "Tente novamente!", [
       {
         text: "Ok",
-        onPress: () => console.log(),
+        onPress: () => console.log("Erro alterar"),
       },
     ]);
 

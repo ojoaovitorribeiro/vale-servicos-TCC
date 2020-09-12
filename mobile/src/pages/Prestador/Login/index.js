@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, TextInput, Alert, AsyncStorage } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TextInput,
+  Alert,
+  AsyncStorage,
+} from "react-native";
 import { BaseButton } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -13,7 +20,7 @@ const Login = () => {
   const navigation = useNavigation();
 
   function handleNavigateToPrincipal(prestador) {
-    navigation.navigate("Principal", {prestador});
+    navigation.navigate("Principal", { prestador });
   }
   function handleNavigateToHome() {
     navigation.goBack("Home");
@@ -27,23 +34,22 @@ const Login = () => {
 
   async function handleLogin() {
     try {
-      const response = await api.post("sessions", {email, senha});
+      const response = await api.post("sessions", { email, senha });
       if (!response.data.email & !response.data.senha) {
         return erroLogin();
       } else {
         AsyncStorage.setItem("email", email);
         AsyncStorage.setItem("senha", senha);
         AsyncStorage.setItem("nome", response.data.nome);
-        AsyncStorage.setItem("prestador", response.data)
-        const prestador = response.data
-        console.log(email, response.data);
+        AsyncStorage.setItem("prestador", response.data);
+        const prestador = response.data;
+        // console.log(email, response.data);
         return handleNavigateToPrincipal(prestador);
       }
     } catch (err) {
       Alert(erroLogin());
-    }  
+    }
   }
- 
 
   const erroLogin = () =>
     Alert.alert("Erro na Autenticação", "Dados incorretos, tente novamente!", [

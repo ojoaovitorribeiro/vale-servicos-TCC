@@ -14,7 +14,7 @@ const Prestadores = () => {
     navigation.navigate("Principalll");
   }
   function handleNavigateToDetalhes(prestador) {
-    navigation.navigate("Detalhes", { prestador });
+    navigation.navigate("Detalhes", { prestador, serv });
   }
 
   const [prestadores, setPrestadores] = useState([]);
@@ -39,7 +39,7 @@ const Prestadores = () => {
   }, []);
 
   const serv = route.params.servico;
-  console.log(route.params.servico);
+  // console.log(route.params.servico);
 
   api.get(`servicosPrestadores/${serv.id}`).then((response) => {
     setPrestadores(response.data);
@@ -63,7 +63,7 @@ const Prestadores = () => {
       </Text>
 
       <Text style={styles.headerText}>
-        Total de <Text style={styles.headerTextText}>{total} prestadores</Text>
+        Total de <Text style={styles.headerTextText}>{total} serviços</Text>
       </Text>
 
       <Text
@@ -86,8 +86,10 @@ const Prestadores = () => {
             <View style={styles.descriptionContainer}>
               <Text style={[styles.description, { marginTop: 10 }]}>Nome:</Text>
               <Text style={[styles.dataValue]}>{prestador.nome}</Text>
-              <Text style={[styles.description]}>Tipo de Trabalho:</Text>
+              <Text style={[styles.description]}>Sobre:</Text>
               <Text style={styles.dataValue}>{prestador.sobre}</Text>
+              <Text style={[styles.description]}>Descrição do serviço:</Text>
+              <Text style={styles.dataValue}>{prestador.descricao}</Text>
               <Text style={[styles.description]}>Telefone:</Text>
               <Text style={styles.dataValue}>{prestador.telefone}</Text>
 
